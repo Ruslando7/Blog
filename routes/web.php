@@ -34,6 +34,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'posts'], 
     });
 });
 
+Route::group(['middleware' => 'guest', 'prefix' => 'vk/auth/'], function () {
+   Route::get('/', \App\Http\Controllers\Social\Vk\IndexController::class)->name('vk.auth');
+   Route::get('/callback', \App\Http\Controllers\Social\Vk\CallBackController::class);
+   Route::get('/email', \App\Http\Controllers\Social\Vk\AddController::class)->name('vk.email.add');
+   Route::post('/store', \App\Http\Controllers\Social\Vk\StoreController::class)->name('vk.email.store');
+});
+
 
 Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
 

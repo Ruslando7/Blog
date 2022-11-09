@@ -61,7 +61,15 @@
                     </p>
                 </a>
             </li>
-            <li class
+            <li class="nav-item">
+                <a href="{{ route('post.index') }}" class="nav-link">
+                    <i class="nav-icon fab fa-vk"></i>
+                    <p>
+                        Back to blog
+                    </p>
+                </a>
+            </li>
+
 
         </ul>
 
