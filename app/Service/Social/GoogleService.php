@@ -10,20 +10,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class VkService
+class GoogleService
 {
-    public function saveVKData($user, $mail = '') {
+    public function saveGoogleData($user) {
         try{
             DB::beginTransaction();
             $email = $user->getEmail();
-            if (!$email) {
-                $email = $mail['email'];
-                $currentTime = '';
-            } else {
-                $currentTime = Carbon::now();
-            }
             $name = $user->getName();
             $password = Hash::make('123456789');
+            $currentTime = Carbon::now();
 
             $newUser = User::firstOrCreate(['email' => $email], [
                 'email' => $email,

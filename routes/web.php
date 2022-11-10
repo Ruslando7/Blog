@@ -41,6 +41,11 @@ Route::group(['middleware' => 'guest', 'prefix' => 'vk/auth/'], function () {
    Route::post('/store', \App\Http\Controllers\Social\Vk\StoreController::class)->name('vk.email.store');
 });
 
+Route::group(['middleware' => 'guest', 'prefix' => 'google/auth/'], function () {
+    Route::get('/', \App\Http\Controllers\Social\Google\IndexController::class)->name('google.auth');
+    Route::get('/callback', \App\Http\Controllers\Social\Google\CallBackController::class);
+});
+
 
 Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
 

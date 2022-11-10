@@ -75,8 +75,9 @@
                         <div class="row mt-5">
                             <div class="col-md-12">
                                 <h6 class="text-center" style="font-size: 18px;">You can also login via:</h6>
-                                <div class="d-flex justify-content-center">
-                                    <a href="{{ route('vk.auth') }}" style="font-size: 20px;"><i class="fab fa-vk"></i></a>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <a href="{{ route('vk.auth') }}" style="font-size: 20px; margin-right: 10px"><i class="fab fa-vk"></i></a>
+                                    <a href="{{ route('google.auth') }}" style="font-size: 17px;"><i class="fab fa-google"></i></a>
                                 </div>
                             </div>
                         </div>
