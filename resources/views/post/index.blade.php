@@ -16,15 +16,15 @@
                                 @guest()
                                 <div>
                                     <span>{{ $post->likedUsers->count() }}</span>
-                                    <a href="{{ route('personal.main.index') }}"><i class="far fa-heart"></i></a>
+                                    <a href="{{ route('login') }}"><i class="far fa-heart"></i></a>
                                 </div>
                                 @endguest
                                 @auth()
                                     <div class="d-flex">
                                         <span>{{ $post->likedUsers->count() }}</span>
-                                        <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                        <form action="#" method="post">
                                             @csrf
-                                            <button type="submit" class="border-0 bg-transparent">
+                                            <button id="like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
                                                 <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
                                             </button>
                                         </form>
