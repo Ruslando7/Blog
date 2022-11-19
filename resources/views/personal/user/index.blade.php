@@ -48,7 +48,7 @@
                                     </tr>
                                     <tr>
                                         <th>Date of registration</th>
-                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $date->format('d M Y') }}</td>
                                     </tr>
                                     <tr>
                                         <th>Edit Profile</th>

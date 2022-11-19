@@ -8,4 +8,4 @@
 весь CRUD юзеров, постов, категорий и т.д.  
   
   Стек:  
-  PHP, Laravel
+  PHP, Laravel, AJAX

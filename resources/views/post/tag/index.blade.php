@@ -20,12 +20,12 @@
                                     </div>
                                 @endguest
                                 @auth()
-                                    <div class="d-flex">
-                                        <span>{{ $post->likedUsers->count() }}</span>
+                                    <div class="d-flex" id="like" data-like="{{ $post->id }}">
+                                        <span id="count">{{ $post->likedUsers->count() }}</span>
                                         <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="border-0 bg-transparent">
-                                                <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                            <button id="btn-like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
+                                                <i id="icon" class="fa-heart fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }}"></i>
                                             </button>
                                         </form>
                                     </div>

@@ -20,12 +20,12 @@
                                 </div>
                                 @endguest
                                 @auth()
-                                    <div class="d-flex">
-                                        <span>{{ $post->likedUsers->count() }}</span>
-                                        <form action="#" method="post">
+                                    <div class="d-flex" id="like" data-like="{{ $post->id }}">
+                                        <span id="count">{{ $post->likedUsers->count() }}</span>
+                                        <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                             @csrf
-                                            <button id="like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
-                                                <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                            <button id="btn-like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
+                                                <i id="icon" class="fa-heart fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }}"></i>
                                             </button>
                                         </form>
                                     </div>
@@ -61,12 +61,12 @@
                                         </div>
                                     @endguest
                                     @auth()
-                                        <div class="d-flex">
-                                            <span>{{ $post->likedUsers->count() }}</span>
+                                        <div class="d-flex" id="like" data-like="{{ $post->id }}">
+                                            <span id="count">{{ $post->likedUsers->count() }}</span>
                                             <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                                 @csrf
-                                                <button type="submit" class="border-0 bg-transparent">
-                                                    <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                                <button id="btn-like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
+                                                    <i id="icon" class="fa-heart fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }}"></i>
                                                 </button>
                                             </form>
                                         </div>
@@ -103,16 +103,16 @@
                                                 @guest()
                                                     <div>
                                                         <span>{{ $post->likedUsers->count() }}</span>
-                                                        <a href="{{ route('personal.main.index') }}"><i class="far fa-heart"></i></a>
+                                                        <a href="{{ route('personal.main.index') }}"><i class="far fa-heart" style="font-size: 16px;margin-left: 2px; color: #007bff;"></i></a>
                                                     </div>
                                                 @endguest
                                                 @auth()
-                                                    <div class="d-flex">
-                                                        <span>{{ $post->likedUsers->count() }}</span>
+                                                    <div class="d-flex" id="like" data-like="{{ $post->id }}">
+                                                        <span id="count">{{ $post->likedUsers->count() }}</span>
                                                         <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                                             @csrf
-                                                            <button type="submit" class="border-0 bg-transparent">
-                                                                <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                                            <button id="btn-like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
+                                                                <i id="icon" class="fa-heart fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }}"></i>
                                                             </button>
                                                         </form>
                                                     </div>
@@ -139,16 +139,16 @@
                                             @guest()
                                                 <div>
                                                     <span>{{ $post->likedUsers->count() }}</span>
-                                                    <a href="{{ route('personal.main.index') }}"><i class="far fa-heart"></i></a>
+                                                    <i class="far fa-heart" style="color: #007bff"></i>
                                                 </div>
                                             @endguest
                                             @auth()
-                                                <div class="d-flex">
-                                                    <span>{{ $post->likedUsers->count() }}</span>
+                                                <div class="d-flex" id="like" data-like="{{ $post->id }}">
+                                                    <span id="count">{{ $post->likedUsers->count() }}</span>
                                                     <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                                         @csrf
-                                                        <button type="submit" class="border-0 bg-transparent">
-                                                            <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                                        <button id="btn-like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
+                                                            <i id="icon" class="fa-heart fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }}"></i>
                                                         </button>
                                                     </form>
                                                 </div>

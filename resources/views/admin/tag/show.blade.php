@@ -46,6 +46,14 @@
                                         <th>Title</th>
                                         <td>{{ $tag->title }}</td>
                                     </tr>
+                                    <tr>
+                                        <th>Number of posts in this category</th>
+                                        <td>{{ $tag->posts->count() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>See posts</th>
+                                        <td><a href="{{ route('post.tag.index', $tag->id) }}"><i class="far fa-eye"></i></a></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -49,7 +49,7 @@
                     </li>
                     @guest()
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('personal.main.index') }}">Log In</a>
+                            <a class="nav-link" href="{{ route('login') }}">Log In</a>
                         </li>
                     @endguest
                     @auth()

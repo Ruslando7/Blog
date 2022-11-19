@@ -7941,4 +7941,7 @@ label {
 
 /*# sourceMappingURL=style.css.map */
 
-
+button:active,
+button:focus {
+    outline: none;
+}

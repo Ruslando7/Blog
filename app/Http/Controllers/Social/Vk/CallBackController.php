@@ -10,11 +10,18 @@ class CallBackController extends BaseController
 {
     public function __invoke()
     {
-        $user = Socialite::driver('vkontakte')->user();
-        session(['user' => $user]);
-        if ($user->getEmail()) {
-            if ($user = $this->service->saveVkData($user)) {
+        if (session()->has('user')) {
+            $user = session('user');
+            $mail = session('mail');
+        } else {
+            $user = Socialite::driver('vkontakte')->user();
+            $mail = $user->getEmail();
+            session(['user' => $user]);
+        }
+        if ($mail) {
+            if ($user = $this->service->saveVkData($user, $mail)) {
                 session()->forget('user');
+                session()->forget('mail');
                 Auth::login($user);
                 return redirect()->route('main.index');
             }

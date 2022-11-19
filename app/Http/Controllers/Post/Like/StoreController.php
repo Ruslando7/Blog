@@ -12,6 +12,5 @@ class StoreController extends Controller
     public function __invoke(Post $post)
     {
         $post = auth()->user()->likedUsers()->toggle($post->id);
-        return redirect()->back();
     }
 }

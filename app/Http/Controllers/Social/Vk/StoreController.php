@@ -12,13 +12,7 @@ class StoreController extends BaseController
     public function __invoke(StoreRequest $request)
     {
         $mail = $request->validated();
-        $user = session('user');
-        if ($user = $this->service->saveVkData($user, $mail)) {
-            event(new Registered($user));
-            session()->forget('user');
-            Auth::login($user);
-            return redirect()->route('main.index');
-        }
-        return back(400);
+        session(['mail' => $mail]);
+        return redirect()->route('vk.callback');
     }
 }

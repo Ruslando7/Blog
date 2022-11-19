@@ -17,6 +17,16 @@
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <style>
+        .post td, .post th {
+            max-width: 100px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .post a {
+            color: #212529;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

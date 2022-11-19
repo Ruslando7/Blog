@@ -54,24 +54,24 @@
                     <div class="d-flex align-items-center">
                         <h6 class="mb-1">Оценить статью:</h6>
                         @guest()
-                            <div class="d-flex">
-                                <span>{{ $post->likedUsers->count() }}</span>
-                                <a href="{{ route('personal.main.index') }}"><i class="far fa-heart"></i></a>
+                            <div class="d-flex ml-2">
+                                <span class="mr-1">{{ $post->likedUsers->count() }}</span>
+                                <a href="{{ route('login') }}"><i class="far fa-heart"></i></a>
                             </div>
                         @endguest
                         @auth()
-                            <div class="d-flex ml-2">
-                                <span>{{ $post->likedUsers->count() }}</span>
+                            <div class="d-flex ml-2" id="like" data-like="{{ $post->id }}">
+                                <span id="count">{{ $post->likedUsers->count() }}</span>
                                 <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                     @csrf
-                                    <button type="submit" class="border-0 bg-transparent">
-                                        <i class="fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                    <button id="btn-like" data-id="{{ $post->id }}" type="submit" class="border-0 bg-transparent">
+                                        <i id="icon" class="fa-heart fa{{ auth()->user()->likedUsers->contains($post->id) ? 's' : 'r' }}"></i>
                                     </button>
                                 </form>
                             </div>
                         @endauth
                     </div>
-                    @if(($relatedPosts->toArray()))
+                @if(($relatedPosts->toArray()))
                         <section class="related-posts">
                             <h2 class="section-title mb-4" data-aos="fade-up">Related Posts</h2>
                             <div class="row">

@@ -32,7 +32,21 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-3 mb-3">
+                        <h3>Preview Image</h3>
+                        <div>
+                            <img src="{{ asset('storage/' . $post->preview_image) }}" alt="" width="100%" height="100%">
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <h3>Main Image</h3>
+                        <div>
+                            <img src="{{ asset('storage/' . $post->main_image) }}" alt="" width="100%" height="100%">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -48,7 +62,33 @@
                                     </tr>
                                     <tr>
                                         <th>Content</th>
-                                        <td>{{ $post->content }}</td>
+                                        <td>{!! $post->content !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Category</th>
+                                        <td>{{ $post->category->title }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tags</th>
+                                        <td>
+                                            <?php $i = 1; $postTagCount = $post->tags->count();?>
+                                            @foreach($post->tags as $tag)
+                                                @if($i == $postTagCount)
+                                                    {{ $tag->title }}
+                                                @else
+                                                    {{ $tag->title . ',' }}
+                                                @endif
+                                                <?php $i++;?>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Likes</th>
+                                        <td>{{ $post->likedUsers->count() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Comments</th>
+                                        <td>{{ $post->comments->count() }}</td>
                                     </tr>
                                     </tbody>
                                 </table>

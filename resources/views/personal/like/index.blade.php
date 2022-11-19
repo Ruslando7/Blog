@@ -24,10 +24,11 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6">
-                        <table class="table table-hover">
+                    <div class="col-md-6">
+                        <table class="table table-hover post">
                             <thead>
                             <tr>
+                                <th scope="col"></th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Show</th>
                                 <th scope="col">Delete</th>
@@ -36,8 +37,9 @@
                             <tbody>
                             @foreach($posts as $post)
                                 <tr>
+                                    <td><img src="{{ asset('storage/' . $post->preview_image) }}" alt="preview image" width="100%" height="100%"></td>
                                     <td>{{ $post->title }}</td>
-                                    <td><a href="{{ route('personal.like.index', $post->id) }}"><i
+                                    <td><a href="{{ route('post.show', $post->id) }}" style="color: #007bff"><i
                                                 class="far fa-eye"></i></a></td>
                                     <td>
                                         <form action="{{ route('personal.like.delete', $post->id) }}" method="POST">
